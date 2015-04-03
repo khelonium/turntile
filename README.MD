@@ -7,3 +7,10 @@ Lock, Coin, Unlock, unlock()
 Lock, Pass, Lock, alarm()
 Unlock, Pass,Lock, lock()
 Unlock, Coin, Unlock, thanks()
+
+
+To implement
+------
+- switch implementation
+- Table Driven
+- state pattern implementation
