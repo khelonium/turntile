@@ -1,0 +1,15 @@
+{
+    "name": "refactoring/turnstile",
+    "description": "Turnstile state machine experiments inspired by cleancoders.com codecast",
+    "require-dev": {
+        "phpunit/phpunit": "~4.8@dev"
+    },
+    "authors": [
+        {
+            "name": "Cosmin Dordea",
+            "email": "khelonium@yahoo.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
