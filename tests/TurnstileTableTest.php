@@ -1,7 +1,8 @@
 <?php
 namespace Refactoring\Turnstile;
 
-use Refactoring\Turnstile\Table\Transition;
+use Refactoring\Turnstile\FSM\Table;
+use Refactoring\Turnstile\FSM\Table\Transition;
 
 require_once 'AbstractTurnstileTest.php';
 
@@ -9,7 +10,7 @@ class TurnstileTableTest extends AbstractTurnstileTest
 {
     protected function buildStateMachine()
     {
-        return new FsmTable($this->turnstile);
+        return new Table($this->turnstile);
     }
 
 

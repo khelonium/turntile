@@ -1,16 +1,19 @@
-<?php namespace Refactoring\Turnstile;
+<?php namespace Refactoring\Turnstile\FSM;
 
 use Refactoring\Turnstile\Double\Turnstile;
+use Refactoring\Turnstile\Event;
+use Refactoring\Turnstile\FSM;
+use Refactoring\Turnstile\State;
 
-class FSMSwitch
+/**
+ * Would have named this Switch but it is a reserved word
+ * Class SwitchImplementation
+ * @package Refactoring\Turnstile\FSM
+ */
+class SwitchImplementation implements FSM
 {
 
-    private $state = STATE::LOCKED;
-
-    private $events = [
-        Event::PASS,
-        Event::COIN
-    ];
+    private $state = State::LOCKED;
 
     /**
      * @var Turnstile

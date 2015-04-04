@@ -1,5 +1,5 @@
 <?php
-namespace Refactoring\Turnstile\Table;
+namespace Refactoring\Turnstile\FSM\Table;
 
 class Transition 
 {
@@ -28,8 +28,8 @@ class Transition
 
     public function accept($fsm)
     {
-        $closure = $this->action;
-        $closure($fsm);
+       $closure =  $this->action->bindTo($fsm);
+        $closure();
     }
 
 

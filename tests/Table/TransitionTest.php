@@ -1,7 +1,7 @@
 <?php
 namespace Table;
 
-use Refactoring\Turnstile\Table\Transition;
+use Refactoring\Turnstile\FSM\Table\Transition;
 
 class TransitionTest extends \PHPUnit_Framework_TestCase
 {
@@ -13,8 +13,8 @@ class TransitionTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->transition = new Transition('current', 'event', 'next', function ($fsm) {
-            $fsm->action();
+        $this->transition = new \Refactoring\Turnstile\FSM\Table\Transition('current', 'event', 'next', function () {
+            $this->action();
         });
     }
 

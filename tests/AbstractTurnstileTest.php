@@ -2,6 +2,7 @@
 namespace Refactoring\Turnstile;
 use PHPUnit_Framework_TestCase;
 use Refactoring\Turnstile\Double\Turnstile;
+use Refactoring\Turnstile\FSM\SwitchImplementation;
 
 abstract class AbstractTurnstileTest  extends PHPUnit_Framework_TestCase
 {
@@ -11,7 +12,7 @@ abstract class AbstractTurnstileTest  extends PHPUnit_Framework_TestCase
      */
     public $turnstile;
     /**
-     * @var FSMSwitch
+     * @var SwitchImplementation
      */
     protected $fsm;
 
