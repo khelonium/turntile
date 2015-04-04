@@ -36,7 +36,7 @@ abstract class AbstractTurnstileTest  extends PHPUnit_Framework_TestCase
      */
     public function theDefaultStateIsLocked()
     {
-        $this->fsm->handle('PASS');
+        $this->fsm->handle(Event::PASS);
         $this->assertEquals('A', $this->turnstile->history);
     }
 
@@ -52,10 +52,10 @@ abstract class AbstractTurnstileTest  extends PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function ACounAFterACoinWillBeThanked()
+    public function ACoinAFterACoinWillBeThanked()
     {
-        $this->fsm->handle('COIN');
-        $this->fsm->handle('COIN');
+        $this->fsm->handle(Event::COIN);
+        $this->fsm->handle(Event::COIN);
         $this->assertEquals('UT', $this->turnstile->history);
 
     }

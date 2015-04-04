@@ -1,6 +1,8 @@
 <?php
 namespace Refactoring\Turnstile;
 
+use Refactoring\Turnstile\Table\Transition;
+
 require_once 'AbstractTurnstileTest.php';
 
 class TurnstileTableTest extends AbstractTurnstileTest
@@ -9,5 +11,6 @@ class TurnstileTableTest extends AbstractTurnstileTest
     {
         return new FsmTable($this->turnstile);
     }
+
 
 }
