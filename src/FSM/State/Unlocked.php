@@ -2,7 +2,7 @@
 
 use Refactoring\Turnstile\Double\Turnstile;
 use Refactoring\Turnstile\FSM\StateImplementation;
-use Refactoring\Turnstile\State;
+use Refactoring\Turnstile\FSM\State;
 use Refactoring\Turnstile\States;
 
 class Unlocked implements State

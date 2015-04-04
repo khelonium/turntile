@@ -1,7 +1,6 @@
 <?php
-namespace Refactoring\Turnstile;
+namespace Refactoring\Turnstile\FSM;
 
-use Refactoring\Turnstile\FSM\StateImplementation;
 
 interface State
 {
