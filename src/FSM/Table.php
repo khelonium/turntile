@@ -2,7 +2,7 @@
 
 use Refactoring\Turnstile\Event;
 use Refactoring\Turnstile\FSM;
-use Refactoring\Turnstile\State;
+use Refactoring\Turnstile\States;
 use Refactoring\Turnstile\FSM\Table\Transition;
 use Refactoring\Turnstile\Turnstile;
 
@@ -14,23 +14,23 @@ class Table implements FSM
     private $turnstile = null;
 
     protected $transitions = [];
-    private $state = State::LOCKED;
+    private $state = States::LOCKED;
 
     public function __construct($turnstile)
     {
         $this->turnstile = $turnstile;
 
-        $this->transitions[] = new Transition(State::LOCKED, Event::PASS, State::LOCKED, function () {
+        $this->transitions[] = new Transition(States::LOCKED, Event::PASS, States::LOCKED, function () {
             $this->alert();
         });
-        $this->transitions[] = new Transition(State::LOCKED, Event::COIN, State::UNLOCKED, function () {
+        $this->transitions[] = new Transition(States::LOCKED, Event::COIN, States::UNLOCKED, function () {
             $this->unlock();
         });
-        $this->transitions[] = new Transition(State::UNLOCKED, Event::COIN, State::UNLOCKED, function () {
+        $this->transitions[] = new Transition(States::UNLOCKED, Event::COIN, States::UNLOCKED, function () {
             $this->thanks();
         });
-        
-        $this->transitions[] = new Transition(State::UNLOCKED, Event::PASS, State::LOCKED, function () {
+
+        $this->transitions[] = new Transition(States::UNLOCKED, Event::PASS, States::LOCKED, function () {
             $this->lock();
         });
 

@@ -1,9 +1,11 @@
 <?php
 namespace Refactoring\Turnstile;
 
-class State 
-{
+use Refactoring\Turnstile\FSM\StateImplementation;
 
-  const LOCKED   = 'locked';
-  const UNLOCKED = 'unlocked';
+interface State
+{
+    public function pass(StateImplementation $fsm);
+
+    public function coin(StateImplementation $fsm);
 }

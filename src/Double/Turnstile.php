@@ -1,7 +1,9 @@
 <?php
 namespace Refactoring\Turnstile\Double;
 
-class Turnstile
+use Refactoring\Turnstile\Turnstile as TurnstileInterface;
+
+class Turnstile implements TurnstileInterface
 {
 
     public $history = '';

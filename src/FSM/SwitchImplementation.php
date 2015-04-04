@@ -3,7 +3,7 @@
 use Refactoring\Turnstile\Double\Turnstile;
 use Refactoring\Turnstile\Event;
 use Refactoring\Turnstile\FSM;
-use Refactoring\Turnstile\State;
+use Refactoring\Turnstile\States;
 
 /**
  * Would have named this Switch but it is a reserved word
@@ -13,7 +13,7 @@ use Refactoring\Turnstile\State;
 class SwitchImplementation implements FSM
 {
 
-    private $state = State::LOCKED;
+    private $state = States::LOCKED;
 
     /**
      * @var Turnstile
@@ -31,10 +31,10 @@ class SwitchImplementation implements FSM
 
 
         switch ($this->state) {
-            case State::LOCKED:
+            case States::LOCKED:
                 switch ($event) {
                     case Event::COIN:
-                        $this->state = State::UNLOCKED;
+                        $this->state = States::UNLOCKED;
                         $this->turnstile->unlock();
                         break;
                     case Event::PASS:
@@ -45,13 +45,13 @@ class SwitchImplementation implements FSM
                         break;
                 }
                 break;
-            case State::UNLOCKED:
+            case States::UNLOCKED:
                 switch ($event) {
                     case Event::COIN:
                         $this->turnstile->thanks();
                         break;
                     case Event::PASS:
-                        $this->state = State::LOCKED;
+                        $this->state = States::LOCKED;
                         $this->turnstile->lock();
                         break;
                     default:
