@@ -10,7 +10,7 @@ class TurnstileStatePatternTest extends AbstractTurnstileTest
 {
     protected function buildStateMachine()
     {
-        return new FSM\StateImplementation($this->turnstile);
+        return new FSM\TestablePattern($this->turnstile);
     }
 
 }

@@ -2,7 +2,8 @@
 
 use Refactoring\Turnstile\Double\Turnstile;
 use Refactoring\Turnstile\FSM;
-use Refactoring\Turnstile\FSM\StateImplementation;
+use Refactoring\Turnstile\FSM\Pattern;
+use Refactoring\Turnstile\FSM\TestablePattern;
 use Refactoring\Turnstile\FSM\State;
 use Refactoring\Turnstile\States;
 
@@ -20,12 +21,12 @@ class Locked implements State
     }
 
 
-    public function pass(StateImplementation $fsm)
+    public function pass(Pattern $fsm)
     {
         $this->turnstile->alert();
     }
 
-    public function coin(StateImplementation $fsm)
+    public function coin(Pattern $fsm)
     {
         $this->turnstile->unlock();
         $fsm->setState(States::UNLOCKED);

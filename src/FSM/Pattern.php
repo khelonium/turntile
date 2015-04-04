@@ -1,22 +1,25 @@
-<?php namespace Refactoring\Turnstile\FSM;
+<?php
+namespace Refactoring\Turnstile\FSM;
 
 use Refactoring\Turnstile\Double\Turnstile;
-use Refactoring\Turnstile\Event;
 use Refactoring\Turnstile\Exception\InvalidState;
-use Refactoring\Turnstile\Exception\UnknownEvent;
-use Refactoring\Turnstile\FSM;
 use Refactoring\Turnstile\FSM\State\Locked;
 use Refactoring\Turnstile\FSM\State\Unlocked;
 use Refactoring\Turnstile\States;
 
-class StateImplementation implements FSM
+class Pattern
 {
 
+    /**
+     * @var State
+     */
     private $state = null;
+
     /**
      * @var
      */
     private $turnstile;
+
 
     public function __construct(Turnstile $turnstile)
     {
@@ -39,22 +42,15 @@ class StateImplementation implements FSM
                 throw new InvalidState($state);
                 break;
         }
-
     }
 
-    public function handle($event)
+    public function pass()
     {
-        switch ($event) {
-            case Event::PASS:
-                $this->state->pass($this);
-                break;
+        $this->state->pass($this);
+    }
 
-            case Event::COIN:
-                $this->state->coin($this);
-                break;
-            default:
-                throw new UnknownEvent($event);
-                break;
-        }
+    public function coin()
+    {
+        $this->state->coin($this);
     }
 }
