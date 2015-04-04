@@ -10,7 +10,7 @@ class TurnstileFSMTest extends \PHPUnit_Framework_TestCase
      */
     public $turnstile;
     /**
-     * @var FSM
+     * @var FSMSwitch
      */
     private $fsm;
 
@@ -20,7 +20,7 @@ class TurnstileFSMTest extends \PHPUnit_Framework_TestCase
     public function construct()
     {
         $this->turnstile = new Turnstile();
-        $this->fsm = new FSM($this->turnstile);
+        $this->fsm = new FSMSwitch($this->turnstile);
     }
 
     /**
@@ -66,8 +66,8 @@ class TurnstileFSMTest extends \PHPUnit_Framework_TestCase
      */
     public function afterWePassWeLock()
     {
-        $this->fsm->handle(FSM::COIN);
-        $this->fsm->handle(FSM::PASS);
+        $this->fsm->handle(Event::COIN);
+        $this->fsm->handle(Event::PASS);
         $this->assertEquals('UL', $this->turnstile->history);
 
     }
@@ -77,16 +77,16 @@ class TurnstileFSMTest extends \PHPUnit_Framework_TestCase
      */
     public function integrationTest()
     {
-        $this->fsm->handle(FSM::PASS);
-        $this->fsm->handle(FSM::PASS);
-        $this->fsm->handle(FSM::PASS);
-        $this->fsm->handle(FSM::COIN);
-        $this->fsm->handle(FSM::COIN);
-        $this->fsm->handle(FSM::COIN);
-        $this->fsm->handle(FSM::PASS);
-        $this->fsm->handle(FSM::PASS);
-        $this->fsm->handle(FSM::PASS);
-        $this->fsm->handle(FSM::COIN);
+        $this->fsm->handle(Event::PASS);
+        $this->fsm->handle(Event::PASS);
+        $this->fsm->handle(Event::PASS);
+        $this->fsm->handle(Event::COIN);
+        $this->fsm->handle(Event::COIN);
+        $this->fsm->handle(Event::COIN);
+        $this->fsm->handle(Event::PASS);
+        $this->fsm->handle(Event::PASS);
+        $this->fsm->handle(Event::PASS);
+        $this->fsm->handle(Event::COIN);
         $this->assertEquals('AAAUTTLAAU', $this->turnstile->history);
 
     }
